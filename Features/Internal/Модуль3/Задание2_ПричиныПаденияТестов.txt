@@ -1,0 +1,23 @@
+Всего при выполнении сборки произошло 7 падений. Рассмотрим по порядку каждый из них:
+
+1. "Error calling context method (ExecuteCommand)"
+Не смогли открыть гиперссылку SalesOrder. Первое на что обратим внимание - это скриншоты. Возникла ошибка из-за не закрытого модального окна от счет-фактуры. Для устойчивости теста необходимо записать шаг на закрытие всех окон клиентского приложения. Тогда не будем проблем из-за незакрытых модальных окон.
+
+2. В таблице "BasisesTree" ожидаемое количество строк 0, а текущее число строк - 2.
+
+3. Не найдена форма с именем "List". На предыдущем шаге после нажатия на кнопку "FormPostAndClose" ("Провести и закрыть") появилась ошибка, поэтому форма документа не закрыалась, а форма списка не была открыта и не была найдена нужная таблица.
+
+4. "Line No." , "_092003 check serial lot number in the Retail return receipt"
+В шаге "And "ResultTable" spreadsheet document contains lines:" в таблице "ResultTable" не заполнене "Branch" (diff показвает, что там должно быть значние Shop01) и заполнен "Row key" возле "Serial number"
+
+5. "The button/command with <Sales invoice> header is not found"
+Не найдена команда <Sales invoice>, потому что осталось открытым модальное окно после нудачной попытки отправки документа заказа. Это можно понять по скриншотам из теста.
+
+6 и 7. "Unable to move to the required line in <BasisesTree> table"
+	a) "_024004 create SI using form link/unlink"
+	На шаге "And I go to line in "BasisesTree" table" возникает ошибка, так как ожидается ввод количества "Quantity" 7 000 (см. таблицу на шаге с ошибкой), а вводится фактическое количество 5 000 (см. скриншот и ActiveFormState.html)
+
+	b) "_2060018 check link form in the PI with 2 lines with the same items"
+	в таблице "BasisesTree" не найдена строка (см. скриншот и ActiveFormState.html):
+	Currency	Price	Quantity	Row presentation	Unit
+	TRY	100,00	10,000	Dress (S/Yellow)	pcs
