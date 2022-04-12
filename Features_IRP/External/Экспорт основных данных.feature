@@ -538,3 +538,9 @@
 		| 'e1cib/data/Catalog.PartnerSegments?ref=b762b13668d0905011eb76684b9f6864' | 'e1cib/data/Catalog.Partners?ref=b762b13668d0905011eb7663e35d7952' |
 		| 'e1cib/data/Catalog.PartnerSegments?ref=b762b13668d0905011eb76684b9f6864' | 'e1cib/data/Catalog.Partners?ref=b762b13668d0905011eb7663e35d7953' |
     
+	// Справочник.ExpenseAndRevenueTypes (урок 4 модуля 4 смотри 5:30 видео )
+
+	И я проверяю или создаю для справочника "ExpenseAndRevenueTypes" объекты:
+		| 'Ref'                                                                            | 'DeletionMark' | 'Parent' | 'Code' | 'IsExpense' | 'IsRevenue' | 'IsFinancialMovementType' | 'Description_en' | 'Description_hash' | 'Description_ru'  | 'Description_tr' |
+		| 'e1cib/data/Catalog.ExpenseAndRevenueTypes?ref=9f913c7c3f1675cb11ecb9f36346d52e' | 'False'        | ''       | 1      | 'True'      | 'False'     | 'False'                   | ''               | ''                 | 'Статья расходов' | ''               |
+
